@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sun.onlineRetailers.category.domain.ProductCategory;
+import com.sun.onlineRetailers.bean.TreeBean;
 import com.sun.onlineRetailers.category.service.PooductCategoryService;
 
 @RestController
@@ -19,8 +19,8 @@ public class ProductCategoryController{
 	PooductCategoryService productCategoryService;
 	
 	@GetMapping
-	public List<ProductCategory> getProductCategoryList() {
-		List<ProductCategory> list = new ArrayList<>();
+	public List<TreeBean> getProductCategoryList() {
+		List<TreeBean> list = new ArrayList<>();
 		try {
 			 list = productCategoryService.list();
 		} catch (Exception e) {

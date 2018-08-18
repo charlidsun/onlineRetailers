@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.onlineRetailers.bean.TreeBean;
 import com.sun.onlineRetailers.category.domain.ProductCategory;
 import com.sun.onlineRetailers.utils.DbUtils;
 import com.sun.onlineRetailers.utils.TransUtils;
@@ -23,12 +24,12 @@ public class PooductCategoryService {
 	@Autowired
 	DbUtils dbUtils;
 
-	public List<ProductCategory> list() throws Exception{
-		List<ProductCategory> list = new ArrayList<>();
-		String sql = "SELECT * from product_category where status = 1 ORDER BY pid,sort";
+	public List<TreeBean> list() throws Exception{
+		List<TreeBean> list = new ArrayList<>();
+		String sql = "SELECT id,pid pId,name from product_category where status = 1 ORDER BY pid,sort";
 		List<Map<String,Object>> listMap = dbUtils.getList(sql);
 		if (listMap != null) {
-			list = TransUtils.listMapToList(listMap, ProductCategory.class);
+			list = TransUtils.listMapToList(listMap, TreeBean.class);
 		}
 		return list;
 	}
